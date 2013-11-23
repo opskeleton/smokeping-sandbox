@@ -2,3 +2,5 @@ modules
 .vagrant
 .librarian
 .tmp
+static-modules/local
+pkg
