@@ -16,7 +16,7 @@ GIT
 GIT
   remote: git://github.com/narkisr/puppet-smokeping.git
   ref: master
-  sha: 788eb03f090c37e29443455d71ff2b8324372efd
+  sha: d0080e5ce9a2b3e028535d53134f9854118c87d3
   specs:
     smokeping (1.0.0)
       ripienaar/concat (>= 0.2.0)
