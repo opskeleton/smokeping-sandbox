@@ -4,8 +4,8 @@ mod 'puppetlabs/stdlib'
 
 mod 'puppetlabs/apt'
 
-mod 'editfile', 
+mod 'mstrauss/editfile', 
    :git => 'git://github.com/mstrauss/puppet-editfile.git'
 
-mod 'smokeping',
+mod 'narkisr/smokeping',
    :git => 'git://github.com/narkisr/puppet-smokeping.git'

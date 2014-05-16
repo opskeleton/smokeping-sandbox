@@ -11,19 +11,19 @@ GIT
   ref: master
   sha: 884efdc0997af667f24625e696630e6b1db5a952
   specs:
-    editfile (0.0.1)
+    mstrauss/editfile (0.0.1)
 
 GIT
   remote: git://github.com/narkisr/puppet-smokeping.git
   ref: master
   sha: d0080e5ce9a2b3e028535d53134f9854118c87d3
   specs:
-    smokeping (1.0.0)
+    narkisr/smokeping (1.0.0)
       ripienaar/concat (>= 0.2.0)
 
 DEPENDENCIES
-  editfile (>= 0)
+  mstrauss/editfile (>= 0)
+  narkisr/smokeping (>= 0)
   puppetlabs/apt (>= 0)
   puppetlabs/stdlib (>= 0)
-  smokeping (>= 0)
 
