@@ -1,0 +1,6 @@
+default:
+  build: .
+  ports: 
+    - '9000:80'
+#volumes:
+

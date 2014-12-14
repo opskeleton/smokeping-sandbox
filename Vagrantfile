@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
 
   config.vm.box = 'ubuntu-12.04.3_puppet-3.3.2' 
-  config.vm.network :public_network
+  config.vm.network :public_network,  { bridge: 'eth0' }
   config.vm.hostname = 'smokeping.local'
 
   config.vm.provider :virtualbox do |vb|

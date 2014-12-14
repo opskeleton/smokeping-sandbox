@@ -2,12 +2,13 @@
 This project manages a sandbox for [smokeping](http://oss.oetiker.ch/smokeping/)
 
 [![Build Status](https://travis-ci.org/opskeleton/smokeping-sandbox.png)](https://travis-ci.org/opskeleton/smokeping-sandbox)
+
 # Usage
 ```bash
-  $ bundle install 
-  $ librarian-puppet install 
-  $ vagrant up
+  $ ./boot.sh
 ```
+
+Once up access smokeping using {host}/cgi-bin/smokeping.cgi
 
 # Copyright and license
 
