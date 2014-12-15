@@ -1,6 +1,7 @@
 default:
   build: .
   ports: 
-    - '9000:80'
+    - '9000:9000'
+    - '8081:80'
 #volumes:
 
