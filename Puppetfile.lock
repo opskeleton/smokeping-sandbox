@@ -17,7 +17,7 @@ GIT
 GIT
   remote: git://github.com/pulling-strings/puppet-smokeping.git
   ref: master
-  sha: b2984522c7b811701b3de17ad09ab103007757f7
+  sha: 83d4b486190df7be0ae0a0950ca514a8a1fc04eb
   specs:
     strings-smokeping (1.6.0)
       puppetlabs-concat (>= 0)
