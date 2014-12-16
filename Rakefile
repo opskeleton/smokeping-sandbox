@@ -20,31 +20,14 @@ task :modspec do
 end
 
 require 'puppet-lint/tasks/puppet-lint'
-PuppetLint.configuration.ignore_paths =['modules/**/*', 'vendor/**/*']
-PuppetLint.configuration.send("disable_80chars")
 
-desc "Run serverspec to all hosts"
-task :spec => 'serverspec:all'
+# see https://github.com/rodjek/puppet-lint/issues/331
+Rake::Task[:lint].clear
 
-class ServerspecTask < RSpec::Core::RakeTask
-
-  attr_accessor :target
-
-  def spec_command
-    cmd = super
-    "env TARGET_HOST=#{target} #{cmd}"
-  end
-
+PuppetLint::RakeTask.new :lint do |config|
+  config.pattern = 'static-modules/**/*.pp'
+  config.ignore_paths = ['modules']
+  config.disable_checks = ['80chars']
+  config.with_context = true
 end
 
-namespace :serverspec do
-
-  %w(<%=@name%>).each do |profile|
-    ServerspecTask.new(profile.to_sym) do |t|
-      t.target = profile
-      t.pattern = "spec/#{profile}/*_spec.rb"
-    end
-  end
-end
-
-task :default => 'serverspec:minimal'
