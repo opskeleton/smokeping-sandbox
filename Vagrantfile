@@ -7,17 +7,28 @@ if [ ! -f /tmp/up ]; then
 fi
 SCRIPT
 
+device = ENV['VAGRANT_BRIDGE'] || 'eth0'
 
 Vagrant.configure("2") do |config|
 
 
-  config.vm.box = 'ubuntu-12.04.3_puppet-3.3.2' 
-  config.vm.network :public_network,  { bridge: 'eth0' }
+  config.vm.box = 'ubuntu-12.04.4_puppet-3.6.1' 
+  config.vm.network :public_network, :bridge => device , :dev => device
   config.vm.hostname = 'smokeping.local'
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 2]
   end
+
+  config.vm.provider :libvirt do |domain, o|
+    domain.uri = 'qemu+unix:///system'
+    domain.host = "smokeping.local"
+    domain.memory = 2048
+    domain.cpus = 2
+    domain.storage_pool_name = 'daemon'
+    o.vm.synced_folder './', '/vagrant', type: 'nfs'
+  end
+
 
   config.vm.provision :shell, :inline => update
   config.vm.provision :puppet do |puppet|
