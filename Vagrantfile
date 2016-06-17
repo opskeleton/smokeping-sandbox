@@ -2,19 +2,19 @@
 # vi: set ft=ruby :
 update = <<SCRIPT
 if [ ! -f /tmp/up ]; then
-  sudo aptitude update 
+  sudo apt-get update 
   touch /tmp/up
 fi
 SCRIPT
 
-device = ENV['VAGRANT_BRIDGE'] || 'eth0'
+# device = ENV['VAGRANT_BRIDGE'] || 'eth0'
 
 Vagrant.configure("2") do |config|
 
-
-  config.vm.box = 'ubuntu-12.04.4_puppet-3.6.1' 
-  config.vm.network :public_network, :bridge => device , :dev => device
+  config.vm.box = 'ubuntu-16.04_puppet-3.8.7' 
+  # config.vm.network :public_network, :bridge => device , :dev => device
   config.vm.hostname = 'smokeping.local'
+  config.vm.provider 'libvirt'
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 2]
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     domain.host = "smokeping.local"
     domain.memory = 2048
     domain.cpus = 2
-    domain.storage_pool_name = 'daemon'
+    domain.storage_pool_name = 'default'
     o.vm.synced_folder './', '/vagrant', type: 'nfs'
   end
 
